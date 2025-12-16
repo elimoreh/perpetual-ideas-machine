@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{{ invention.title }} - Perpetual Ideas Machine{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+            <li class="breadcrumb-item">
+                <a href="{{ url_for('view_domain', domain_key=domain_key) }}">{{ domain_info.name }}</a>
+            </li>
+            <li class="breadcrumb-item active">{{ invention.id }}</li>
+        </ol>
+    </nav>
+
+    <!-- Invention Header -->
+    <div class="card mb-4" style="border-left: 4px solid {{ domain_info.color }}">
+        <div class="card-body">
+            <span class="badge mb-2" style="background-color: {{ domain_info.color }}">
+                {{ domain_info.icon }} {{ domain_info.name }}
+            </span>
+            <h1 class="card-title">{{ invention.title }}</h1>
+            <p class="text-muted">
+                <strong>Invention ID:</strong> {{ invention.id }}<br>
+                <strong>Publication Date:</strong> {{ invention.date }}<br>
+                <strong>License:</strong> CC0 1.0 Universal (Public Domain)
+            </p>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="mb-4">
+        <a href="{{ url_for('view_domain', domain_key=domain_key) }}" class="btn btn-outline-secondary">
+            ← Back to {{ domain_info.name }}
+        </a>
+        <button class="btn btn-outline-primary" onclick="window.print()">
+            🖨️ Print/Save as PDF
+        </button>
+    </div>
+
+    <!-- Invention Content -->
+    <div class="card">
+        <div class="card-body invention-content">
+            {{ html_content|safe }}
+        </div>
+    </div>
+
+    <!-- Prior Art Notice -->
+    <div class="alert alert-success mt-4">
+        <h5>📜 Prior Art Declaration</h5>
+        <p class="mb-0">
+            This invention has been published as prior art under CC0 1.0 Universal (Public Domain Dedication).
+            The timestamp and cryptographic hash provide verification that this disclosure was made available
+            to the public on {{ invention.date }}. This publication may be cited as prior art in patent examinations.
+        </p>
+    </div>
+
+    <!-- Raw Markdown -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5 class="mb-0">Raw Markdown (for verification)</h5>
+        </div>
+        <div class="card-body">
+            <pre class="bg-light p-3"><code>{{ invention.content }}</code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

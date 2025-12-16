@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Perpetual Ideas Machine - Home{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">⚙️ Perpetual Ideas Machine</h1>
+        <p class="lead">Using AI to preserve the patent commons by generating and publishing prior art at scale</p>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-center stat-card">
+                <div class="card-body">
+                    <h2 class="display-4">{{ stats.total_inventions }}</h2>
+                    <p class="text-muted">Total Inventions Published</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center stat-card">
+                <div class="card-body">
+                    <h2 class="display-4">{{ stats.domains_active }}</h2>
+                    <p class="text-muted">Active Domains</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center stat-card">
+                <div class="card-body">
+                    <h2 class="display-4">10</h2>
+                    <p class="text-muted">Technology Domains</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Domain Grid -->
+    <h2 class="mb-4">Explore Domains</h2>
+    <div class="row">
+        {% for key, domain in domains.items() %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <a href="{{ url_for('view_domain', domain_key=key) }}" class="text-decoration-none">
+                <div class="card h-100 domain-card" style="border-left: 4px solid {{ domain.color }}">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <span class="domain-icon">{{ domain.icon }}</span>
+                            {{ domain.name }}
+                        </h3>
+                        <p class="card-text text-muted">{{ domain.description }}</p>
+                        <p class="text-end mb-0">
+                            <span class="badge bg-secondary">{{ stats.by_domain.get(key, 0) }} inventions</span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-5">
+        <a href="{{ url_for('generate') }}" class="btn btn-primary btn-lg">
+            ✨ Generate New Invention
+        </a>
+    </div>
+
+    <!-- About Section -->
+    <div class="card mt-5 bg-light">
+        <div class="card-body">
+            <h3>About This Project</h3>
+            <p>
+                The Perpetual Ideas Machine is an AI-powered system that generates and publishes novel inventions
+                as prior art. By creating a continuous stream of publicly available technical disclosures, we aim to:
+            </p>
+            <ul>
+                <li><strong>Prevent Patent Trolling:</strong> Make it harder for patent trolls to file broad patents on obvious AI-generated outputs</li>
+                <li><strong>Preserve the Commons:</strong> Keep innovative ideas in the public domain where they can benefit everyone</li>
+                <li><strong>Document AI Capabilities:</strong> Create a timestamped record of what AI systems can generate</li>
+                <li><strong>Enable Innovation:</strong> Provide a searchable database of technical concepts for researchers and inventors</li>
+            </ul>
+            <p class="mb-0">
+                All inventions are published under CC0 1.0 Universal, dedicating them to the public domain.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

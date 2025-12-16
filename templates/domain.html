@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{{ domain_info.name }} - Perpetual Ideas Machine{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Domain Header -->
+    <div class="card mb-4" style="border-left: 4px solid {{ domain_info.color }}">
+        <div class="card-body">
+            <h1 class="card-title">
+                <span class="domain-icon-large">{{ domain_info.icon }}</span>
+                {{ domain_info.name }}
+            </h1>
+            <p class="lead">{{ domain_info.description }}</p>
+            <p class="mb-0">
+                <span class="badge bg-secondary">{{ inventions|length }} inventions</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Generate Button -->
+    <div class="mb-4">
+        <a href="{{ url_for('generate') }}?domain={{ domain_key }}" class="btn btn-primary">
+            ✨ Generate New {{ domain_info.name }} Invention
+        </a>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+            ← Back to All Domains
+        </a>
+    </div>
+
+    <!-- Inventions List -->
+    {% if inventions %}
+        <h2 class="mb-4">Published Inventions</h2>
+        <div class="row">
+            {% for invention in inventions %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 invention-card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ url_for('view_invention', domain_key=domain_key, invention_id=invention.id) }}">
+                                {{ invention.title }}
+                            </a>
+                        </h5>
+                        <p class="text-muted small">
+                            <strong>ID:</strong> {{ invention.id }}<br>
+                            <strong>Published:</strong> {{ invention.date }}
+                        </p>
+                        <p class="card-text small">{{ invention.preview }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="{{ url_for('view_invention', domain_key=domain_key, invention_id=invention.id) }}" 
+                           class="btn btn-sm btn-outline-primary">
+                            View Full Invention →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <h4>No inventions yet in this domain</h4>
+            <p>Be the first to generate an invention in {{ domain_info.name }}!</p>
+            <a href="{{ url_for('generate') }}?domain={{ domain_key }}" class="btn btn-primary">
+                Generate First Invention
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+

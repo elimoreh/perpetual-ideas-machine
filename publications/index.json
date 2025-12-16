@@ -1,0 +1,52 @@
+{
+  "inventions": [
+    {
+      "id": "inv-20251216-231616",
+      "domain": "mechanical-engineering",
+      "timestamp": "2025-12-16T23:16:16.206174",
+      "hash": "b972105423533b2966e880830d88457cf48b203757b2a32f0569b039780c7088"
+    },
+    {
+      "id": "inv-20251216-231627",
+      "domain": "mechanical-engineering",
+      "timestamp": "2025-12-16T23:16:27.857761",
+      "hash": "b149cd604f9d9a15488be6165aa1311f42744c27249e614800a5711a9310833d"
+    },
+    {
+      "id": "inv-20251216-231635",
+      "domain": "mechanical-engineering",
+      "timestamp": "2025-12-16T23:16:35.123601",
+      "hash": "259afc4b3a448f8d335a17ab47a577380782e6757f29174cd371e9e61814dc97"
+    },
+    {
+      "id": "inv-20251216-231912",
+      "domain": "agricultural-technology",
+      "timestamp": "2025-12-16T23:19:12.513299",
+      "hash": "ce396219d71e64b939e39b955670a0fc2690522235cc278f3cba168e559ab0fc"
+    },
+    {
+      "id": "inv-20251216-232109",
+      "domain": "electrical-engineering",
+      "timestamp": "2025-12-16T23:21:09.988038",
+      "hash": "49e746d470d70a90c4cd821b3d2825284cb11175ce80e54ce14cb358826dc088"
+    },
+    {
+      "id": "inv-20251216-232311",
+      "domain": "materials-science",
+      "timestamp": "2025-12-16T23:23:11.317127",
+      "hash": "b7068698350243015273cf48ce4d6f71a2db2ced3efc9c2d1343c429092740b1"
+    },
+    {
+      "id": "inv-20251216-232546",
+      "domain": "chemical-engineering",
+      "timestamp": "2025-12-16T23:25:46.285265",
+      "hash": "57b3baaebcc8cd6174e0d2b454c0fd8f85b5ee405d1b35ca5a6442ef20e47525"
+    },
+    {
+      "id": "inv-20251216-232555",
+      "domain": "chemical-engineering",
+      "timestamp": "2025-12-16T23:25:55.906520",
+      "hash": "80247563103c21504eefeb778c67f22a06cc545546445de2c7171a636236ea30"
+    }
+  ]
+}

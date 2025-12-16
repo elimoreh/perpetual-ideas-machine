@@ -1,0 +1,282 @@
+/* Custom styles for Perpetual Ideas Machine */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Navigation */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.navbar .form-control {
+    min-width: 200px;
+}
+
+/* Cards */
+.domain-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.domain-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.invention-card {
+    transition: box-shadow 0.2s;
+}
+
+.invention-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-card {
+    transition: box-shadow 0.2s;
+}
+
+.search-result-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Icons */
+.domain-icon {
+    font-size: 2rem;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.domain-icon-large {
+    font-size: 3rem;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.domain-icon-small {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+/* Invention Content */
+.invention-content {
+    line-height: 1.8;
+}
+
+.invention-content h1 {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.invention-content h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.invention-content h3 {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.invention-content p {
+    margin-bottom: 1rem;
+}
+
+.invention-content ul, .invention-content ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.invention-content li {
+    margin-bottom: 0.5rem;
+}
+
+.invention-content code {
+    background-color: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.invention-content pre {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.invention-content strong {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Progress bars */
+.progress {
+    background-color: #e9ecef;
+}
+
+/* Links */
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card a:hover h5,
+.card a:hover h3 {
+    color: var(--secondary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .domain-icon {
+        font-size: 1.5rem;
+    }
+    
+    .domain-icon-large {
+        font-size: 2rem;
+    }
+    
+    .navbar .form-control {
+        min-width: 150px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar, footer, .btn, .breadcrumb, .alert {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #dee2e6;
+        box-shadow: none;
+    }
+    
+    .invention-content {
+        font-size: 12pt;
+    }
+}
+
+/* Utility classes */
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Animation for page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Code blocks in raw markdown display */
+pre code {
+    display: block;
+    padding: 0;
+    background-color: transparent;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Loading Overlay Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#loadingOverlay {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#loadingOverlay .spinner-border {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulse animation for loading text */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+#loadingOverlay h2 {
+    animation: pulse 2s ease-in-out infinite;
+}
+
