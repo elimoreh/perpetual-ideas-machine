@@ -117,8 +117,9 @@ def get_inventions_by_domain(domain_key, limit=None):
     cur = conn.cursor()
     
     query = """
-        SELECT invention_id, domain_key, domain_name, title, 
-               LEFT(content, 300) as preview, created_at
+        SELECT invention_id as id, invention_id, domain_key, domain_name, title, 
+               LEFT(content, 300) as preview, created_at,
+               DATE(created_at) as date
         FROM inventions
         WHERE domain_key = %s
         ORDER BY created_at DESC
@@ -142,8 +143,9 @@ def get_all_inventions(limit=100):
     cur = conn.cursor()
     
     cur.execute("""
-        SELECT invention_id, domain_key, domain_name, title,
-               LEFT(content, 200) as preview, created_at
+        SELECT invention_id as id, invention_id, domain_key, domain_name, title,
+               LEFT(content, 200) as preview, created_at,
+               DATE(created_at) as date
         FROM inventions
         ORDER BY created_at DESC
         LIMIT %s
@@ -164,7 +166,8 @@ def search_inventions(query):
     search_term = f"%{query}%"
     
     cur.execute("""
-        SELECT invention_id, domain_key, domain_name, title, content, created_at
+        SELECT invention_id as id, invention_id, domain_key, domain_name, title, content, created_at,
+               DATE(created_at) as date
         FROM inventions
         WHERE LOWER(content) LIKE LOWER(%s) OR LOWER(title) LIKE LOWER(%s)
         ORDER BY created_at DESC
